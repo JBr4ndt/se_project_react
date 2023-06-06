@@ -1,0 +1,43 @@
+.item__modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  padding: 0 19px;
+  display: flex;
+  flex-direction: column;
+}
+
+.item__modal-content {
+  position: relative;
+  max-height: 610px;
+  max-width: 496px;
+  width: 100%;
+  padding: 0;
+  background-color: #fff;
+  margin: auto;
+  border-radius: 16px;
+  box-sizing: border-box;
+  overflow: hidden;
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-weight: 700px;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.item__modal-image {
+  max-height: 496px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.item__modal-name {
+  margin: 12px 0 0 32px;
+}
+
+.item__modal-info {
+  margin: 12px 0 32px 32px;
+}

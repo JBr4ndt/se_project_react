@@ -1,0 +1,22 @@
+.main__clothes {
+  display: flex;
+  flex-direction: column;
+}
+
+.main__info {
+  margin: 33px 0;
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-weight: 700px;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.main__items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(auto, 326px));
+  justify-content: center;
+  grid-gap: 20px 17px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}

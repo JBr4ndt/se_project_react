@@ -1,0 +1,32 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 95px;
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-weight: 700px;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.header__container {
+  display: flex;
+  gap: 20px;
+}
+
+.header__nav {
+  display: flex;
+  gap: 20px;
+}
+
+.header__button {
+  background-color: transparent;
+  border: none;
+  font-weight: 700px;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.header__button:hover {
+  cursor: pointer;
+}

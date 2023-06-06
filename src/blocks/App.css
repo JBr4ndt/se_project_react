@@ -1,0 +1,21 @@
+.page {
+  background: #f3f3f3;
+}
+
+.page__wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+  background-color: #f3f3f3;
+}
+
+.page__section {
+  width: 100%;
+  max-width: 1440px;
+  box-sizing: border-box;
+  position: relative;
+  margin: 0 auto;
+}
