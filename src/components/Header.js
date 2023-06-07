@@ -15,6 +15,9 @@ const Header = ({ onCreateModal }) => {
         <p className="header__date">{currentDate}, Portland</p>
       </div>
       <div className="header__nav">
+        <button type="button" className="header__toggle-button">
+          toggler
+        </button>
         <button type="text" className="header__button" onClick={onCreateModal}>
           + Add clothes
         </button>

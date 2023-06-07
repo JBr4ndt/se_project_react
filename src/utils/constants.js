@@ -1,3 +1,17 @@
+import daySunnyPath from "../images/day/sunny.svg";
+import dayCloudyPath from "../images/day/cloudy.svg";
+import dayRainPath from "../images/day/rain.svg";
+import dayStormPath from "../images/day/storm.svg";
+import daySnowPath from "../images/day/snow.svg";
+import dayFogPath from "../images/day/fog.svg";
+
+import nightClearPath from "../images/night/clear.svg";
+import nightCloudyPath from "../images/night/cloudy.svg";
+import nightRainPath from "../images/night/rain.svg";
+import nightStormPath from "../images/night/storm.svg";
+import nightSnowPath from "../images/night/snow.svg";
+import nightFogPath from "../images/night/fog.svg";
+
 export const latitude = 45.51;
 export const longitude = -122.67;
 export const APIkey = "28c51f31629d1d843df9c1b0423a08cb";
@@ -42,59 +56,59 @@ export const defaultClothingItems = [
 ];
 
 export const weatherOptions = [
-  { url: require("../images/day/sunny.svg").default, day: true, type: "sunny" },
+  { url: daySunnyPath, day: true, type: "sunny" },
   {
-    url: require("../images/day/cloudy.svg").default,
+    url: dayCloudyPath,
     day: true,
     type: "cloudy",
   },
   {
-    url: require("../images/day/rain.svg").default,
+    url: dayRainPath,
     day: true,
     type: "rain",
   },
   {
-    url: require("../images/day/storm.svg").default,
+    url: dayStormPath,
     day: true,
     type: "storm",
   },
   {
-    url: require("../images/day/snow.svg").default,
+    url: daySnowPath,
     day: true,
     type: "snow",
   },
   {
-    url: require("../images/day/fog.svg").default,
+    url: dayFogPath,
     day: true,
     type: "fog",
   },
   {
-    url: require("../images/night/clear.svg").default,
+    url: nightClearPath,
     day: false,
     type: "clear",
   },
   {
-    url: require("../images/night/cloudy.svg").default,
+    url: nightCloudyPath,
     day: false,
     type: "cloudy",
   },
   {
-    url: require("../images/night/rain.svg").default,
+    url: nightRainPath,
     day: false,
     type: "rain",
   },
   {
-    url: require("../images/night/storm.svg").default,
+    url: nightStormPath,
     day: false,
     type: "storm",
   },
   {
-    url: require("../images/night/snow.svg").default,
+    url: nightSnowPath,
     day: false,
     type: "snow",
   },
   {
-    url: require("../images/night/fog.svg").default,
+    url: nightFogPath,
     day: false,
     type: "fog",
   },
