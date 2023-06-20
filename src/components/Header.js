@@ -1,8 +1,10 @@
+import { NavLink } from "react-router-dom";
 import "../blocks/Header.css";
 import logoPath from "../images/logo.svg";
 import avatarPath from "../images/avatar.svg";
+import ToggleSwitch from "./ToggleSwitch";
 
-const Header = ({ onCreateModal }) => {
+const Header = ({ onCreateModal, city }) => {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -11,17 +13,27 @@ const Header = ({ onCreateModal }) => {
   return (
     <header className="header">
       <div className="header__container">
-        <img src={logoPath} alt="What to wear logo" className="header__logo" />
-        <p className="header__date">{currentDate}, Portland</p>
+        <NavLink exact to="/">
+          <img
+            src={logoPath}
+            alt="What to wear logo"
+            className="header__logo"
+          />
+        </NavLink>
+
+        <p className="header__date">
+          {currentDate}, {city}
+        </p>
       </div>
       <div className="header__nav">
-        <button type="button" className="header__toggle-button">
-          toggler
-        </button>
+        <ToggleSwitch />
         <button type="text" className="header__button" onClick={onCreateModal}>
           + Add clothes
         </button>
-        <p className="header__name">Jonathan Brandt</p>
+        <NavLink to="/profile" className="header__link">
+          <p className="header__name">Jonathan Brandt</p>
+        </NavLink>
+
         <img src={avatarPath} alt="Avatar" className="header__avatar" />
       </div>
     </header>

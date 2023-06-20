@@ -1,0 +1,30 @@
+.modal__label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.modal__input {
+  border: none;
+  border-bottom: 1px solid rgb(0, 0, 0);
+  font-size: 16px;
+  line-height: 1.2;
+  box-sizing: border-box;
+}
+
+.modal__radio-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.modal__radio-button {
+  display: flex;
+  gap: 8px;
+}
+
+.modal__radio-input {
+  cursor: pointer;
+  accent-color: rgb(0, 0, 0);
+}

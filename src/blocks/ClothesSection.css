@@ -1,0 +1,34 @@
+.clothes {
+  display: flex;
+  flex-direction: column;
+  max-width: 1020px;
+  width: 100%;
+}
+
+.clothes__container {
+  display: flex;
+  gap: 20px;
+}
+
+.clothes__add-button {
+  background-color: transparent;
+  border: none;
+  font-weight: 700px;
+  font-size: 20px;
+  line-height: 1.2;
+  opacity: 0.6;
+}
+
+.clothes__add-button:hover {
+  cursor: pointer;
+}
+
+.clothes__gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(auto, 326px));
+  justify-content: center;
+  grid-gap: 20px 17px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
