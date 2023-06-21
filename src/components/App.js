@@ -19,6 +19,7 @@ function App() {
   const [city, setCity] = useState("");
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -42,28 +43,49 @@ function App() {
       : setCurrentTemperatureUnit("F");
   };
 
-  const handleAddItemSubmit = (item) => {
-    api
-      .addItem(item)
-      .then((newItem) => {
-        console.log(newItem);
-        setClothingItems([newItem, ...clothingItems]);
+  const handleSubmit = (request) => {
+    setIsLoading(true);
+    request()
+      .then(() => {
         handleCloseModal();
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => setIsLoading(false));
+  };
+
+  const handleAddItemSubmit = (item) => {
+    const addItemRequest = () => {
+      return api.addItem(item).then((newItem) => {
+        setClothingItems([newItem, ...clothingItems]);
+      });
+    };
+    handleSubmit(addItemRequest);
   };
 
   const handleCardDelete = (id) => {
-    api
-      .removeItem(id)
-      .then(() => {
+    const cardDeleteRequest = () => {
+      return api.removeItem(id).then(() => {
         const filteredCards = clothingItems.filter((item) => {
           return item.id !== id;
         });
         setClothingItems(filteredCards);
-      })
-      .catch((err) => console.log(err));
+      });
+    };
+    handleSubmit(cardDeleteRequest);
   };
+
+  useEffect(() => {
+    const closeByEscape = (e) => {
+      if (e.key === "Escape") {
+        handleCloseModal();
+      }
+    };
+    document.addEventListener("keydown", closeByEscape);
+
+    return () => {
+      document.removeEventListener("keydown", closeByEscape);
+    };
+  }, []);
 
   useEffect(() => {
     getForecastWeather()
@@ -117,6 +139,7 @@ function App() {
               onClose={handleCloseModal}
               isOpen={activeModal === "create"}
               onAddItem={handleAddItemSubmit}
+              isLoading={isLoading}
             />
           )}
           {activeModal === "preview" && (
@@ -131,6 +154,7 @@ function App() {
               selectedCard={selectedCard}
               onClose={handleCloseModal}
               onCardDelete={handleCardDelete}
+              isLoading={isLoading}
             />
           )}
         </CurrentTemperatureUnitContext.Provider>

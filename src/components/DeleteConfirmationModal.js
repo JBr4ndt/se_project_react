@@ -1,10 +1,14 @@
 import closeButtonPath from "../images/closeButton.svg";
 import "../blocks/DeleteConfirmationModal.css";
 
-const DeleteConfirmationModal = ({ onClose, selectedCard, onCardDelete }) => {
+const DeleteConfirmationModal = ({
+  onClose,
+  selectedCard,
+  onCardDelete,
+  isLoading,
+}) => {
   const handleDeleteItem = () => {
     onCardDelete(selectedCard.id);
-    onClose();
   };
 
   return (
@@ -24,7 +28,7 @@ const DeleteConfirmationModal = ({ onClose, selectedCard, onCardDelete }) => {
           type="text"
           onClick={handleDeleteItem}
         >
-          Yes, delete item
+          {isLoading ? "Saving..." : "Yes, delete item"}
         </button>
         <button
           className="confirmation__button-cancel"

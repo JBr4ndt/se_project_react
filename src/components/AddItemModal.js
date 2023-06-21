@@ -2,7 +2,7 @@ import ModalWithForm from "./ModalWithForm";
 import "../blocks/AddItemModal.css";
 import { useEffect, useState } from "react";
 
-const AddItemModal = ({ onClose, onAddItem, isOpen }) => {
+const AddItemModal = ({ onClose, onAddItem, isOpen, isLoading }) => {
   const [name, setName] = useState("");
   const [link, setLink] = useState("");
   const [weather, setWeather] = useState("");
@@ -33,7 +33,7 @@ const AddItemModal = ({ onClose, onAddItem, isOpen }) => {
   return (
     <ModalWithForm
       title="New garment"
-      buttonText="Add garment"
+      buttonText={isLoading ? "Saving..." : "Add garment"}
       onClose={onClose}
       onSubmit={handleSubmit}
     >
@@ -46,6 +46,7 @@ const AddItemModal = ({ onClose, onAddItem, isOpen }) => {
           placeholder="Name"
           minLength="2"
           maxLength="30"
+          value={name}
           required
           onChange={handleNameChange}
         />
@@ -57,6 +58,7 @@ const AddItemModal = ({ onClose, onAddItem, isOpen }) => {
           name="link"
           className="modal__input"
           placeholder="Image URL"
+          value={link}
           required
           onChange={handleLinkChange}
         />
