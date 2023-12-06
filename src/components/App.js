@@ -75,43 +75,40 @@ function App() {
       .finally(() => setIsLoading(false));
   };
 
-  const handleRegisterSubmit = (user) => {
-    setIsLoading(true);
-    return auth
-      .register(user)
-      .then((newUser) => {
-        console.log(newUser);
-        setCurrentUser(newUser);
-        setIsLoggedIn(true);
-        localStorage.setItem("jwt", newUser.token);
-        handleCloseModal();
-      })
-      .catch((err) => console.log(err))
-      .finally(() => setIsLoading(false));
+  const handleRegisterSubmit = ({ email, password, name, avatar }) => {
+    const registerRequest = () => {
+      return auth
+        .register({ email, password, name, avatar })
+        .then((newUser) => {
+          console.log(newUser);
+          handleLoginSubmit({ email, password });
+        });
+    };
+    handleSubmit(registerRequest);
   };
 
-  const handleLoginSubmit = (userInfo) => {
-    return auth
-      .authorize(userInfo)
-      .then((res) => {
+  const handleLoginSubmit = ({ email, password }) => {
+    const loginRequest = () => {
+      return auth.authorize({ email, password }).then((res) => {
         const token = res.token;
         localStorage.setItem("jwt", token);
         return auth.getContent(token).then((userData) => {
           setCurrentUser(userData);
           setIsLoggedIn(true);
-          handleCloseModal();
           history.push("/profile");
         });
-      })
-      .catch((err) => {
-        console.log(err);
       });
+    };
+    handleSubmit(loginRequest);
   };
 
-  const handleProfileChanges = (userInfo) => {
+  const handleProfileChanges = ({ name, avatar }) => {
     const editProfileRequest = () => {
-      return auth.editProfile(userInfo).then((res) => {
-        setCurrentUser(res.userInfo);
+      return auth.editProfile({ name, avatar }).then((res) => {
+        console.log(res);
+        const user = { name: res.name, avatar: res.avatar };
+        console.log(user);
+        setCurrentUser(user);
       });
     };
     handleSubmit(editProfileRequest);
@@ -132,7 +129,7 @@ function App() {
     };
     handleSubmit(addItemRequest);
   };
-  //changed id to selectedCard
+
   const handleCardDelete = (selectedCard) => {
     const cardDeleteRequest = () => {
       return api.removeItem(selectedCard._id).then(() => {
@@ -144,7 +141,7 @@ function App() {
     };
     handleSubmit(cardDeleteRequest);
   };
-  //add owner to likes
+
   const handleLikeClick = ({ id, isLiked }) => {
     console.log(id, isLiked);
     const token = localStorage.getItem("jwt");
@@ -310,7 +307,7 @@ function App() {
               <EditProfileModal
                 onClose={handleCloseModal}
                 onChangeProfile={handleProfileChanges}
-                isOpen={activeModal === "editProfile"}
+                //isOpen={activeModal === "editProfile"}
                 isLoading={isLoading}
               />
             )}

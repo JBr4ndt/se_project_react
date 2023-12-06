@@ -4,10 +4,10 @@ import CurrentUserContext from "../contexts/CurrentUserContext";
 
 const SideBar = ({ openChangeProfile, onLogOut }) => {
   const currentUser = useContext(CurrentUserContext);
-  const name = currentUser?.data.name;
-  const avatar = currentUser?.data.avatar;
+  const name = currentUser?.name;
+  const avatar = currentUser?.avatar;
   const currentAvatar = avatar !== "" ? true : false;
-  //test no avatar profile
+
   return (
     <aside className="sidebar">
       <nav className="sidebar__menu">

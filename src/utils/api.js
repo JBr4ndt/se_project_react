@@ -39,7 +39,7 @@ const removeItem = (id) => {
     },
   }).then(checkResponse);
 };
-//pass owner as body
+
 const addCardLike = (id) => {
   return fetch(`${baseUrl}/items/${id}/likes`, {
     method: "PUT",
@@ -49,7 +49,7 @@ const addCardLike = (id) => {
     },
   }).then(checkResponse);
 };
-//pass owner as body
+
 const removeCardLike = (id) => {
   return fetch(`${baseUrl}/items/${id}/likes`, {
     method: "DELETE",

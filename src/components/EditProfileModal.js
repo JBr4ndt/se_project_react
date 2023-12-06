@@ -2,15 +2,15 @@ import ModalWithForm from "./ModalWithForm";
 import { useEffect, useState, useContext } from "react";
 import CurrentUserContext from "../contexts/CurrentUserContext";
 
-const EditProfileModal = ({ onClose, isOpen, isLoading, onChangeProfile }) => {
+const EditProfileModal = ({ onClose, isLoading, onChangeProfile }) => {
   const currentUser = useContext(CurrentUserContext);
-  const [name, setName] = useState(currentUser.data.name);
-  const [avatar, setAvatar] = useState(currentUser.data.avatar);
+  const [name, setName] = useState(currentUser.name);
+  const [avatar, setAvatar] = useState(currentUser.avatar);
 
   useEffect(() => {
-    setName(currentUser.data.name);
-    setAvatar(currentUser.data.avatar);
-  }, [isOpen]);
+    setName(currentUser.name);
+    setAvatar(currentUser.avatar);
+  }, [currentUser]);
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -19,9 +19,19 @@ const EditProfileModal = ({ onClose, isOpen, isLoading, onChangeProfile }) => {
     setAvatar(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  /*const handleSubmit = (e) => {
     e.preventDefault();
     onChangeProfile({ name, avatar });
+  };*/
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await onChangeProfile({ name, avatar });
+      window.location.reload();
+    } catch (err) {
+      console.error("Error updating profile: ", err);
+    }
   };
 
   return (
@@ -52,8 +62,6 @@ const EditProfileModal = ({ onClose, isOpen, isLoading, onChangeProfile }) => {
           name="avatar"
           className="modal__input"
           placeholder="Avatar URL"
-          minLength="2"
-          maxLength="30"
           value={avatar}
           required
           onChange={handleAvatarChange}

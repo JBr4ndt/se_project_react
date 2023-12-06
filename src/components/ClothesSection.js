@@ -11,9 +11,9 @@ const ClothesSection = ({
   isLoggedIn,
 }) => {
   const currentUser = useContext(CurrentUserContext);
-  const itemsOwned = clothingItems.filter((item) => {
-    return item?.owner === currentUser?.data._id;
-  });
+  const itemsOwned = clothingItems.filter(
+    (item) => item?.owner === currentUser?._id
+  );
 
   return (
     <div className="clothes">

@@ -11,9 +11,8 @@ const Header = ({ onCreateModal, onRegister, onLogin, isLoggedIn, city }) => {
     day: "numeric",
   });
   const currentUser = useContext(CurrentUserContext);
-  console.log(currentUser);
-  const name = currentUser?.data.name;
-  const avatar = currentUser?.data.avatar;
+  const name = currentUser ? currentUser?.name : "";
+  const avatar = currentUser?.avatar;
   const currentAvatar = avatar !== "" ? true : false;
 
   return (
