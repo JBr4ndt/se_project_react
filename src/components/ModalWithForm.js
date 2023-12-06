@@ -8,7 +8,14 @@ const ModalWithForm = ({
   onClose,
   name,
   onSubmit,
+  shiftButtonText,
+  shiftOpenModal,
 }) => {
+  const handleShiftButton = () => {
+    onClose();
+    shiftOpenModal();
+  };
+
   return (
     <div className={`modal modal_type_${name}`}>
       <div className="modal__content">
@@ -21,6 +28,15 @@ const ModalWithForm = ({
           <button type="submit" className="modal__button-submit">
             {buttonText}
           </button>
+          {shiftButtonText && (
+            <button
+              type="button"
+              onClick={handleShiftButton}
+              className="modal__button-shift"
+            >
+              {shiftButtonText}
+            </button>
+          )}
         </form>
       </div>
     </div>

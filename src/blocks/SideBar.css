@@ -9,6 +9,9 @@
 .sidebar__user-avatar {
   width: 56px;
   height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
 .sidebar__user {
@@ -18,4 +21,30 @@
   align-items: center;
   margin: 0;
   padding: 0;
+}
+
+.sidebar__user-controller {
+  display: flex;
+  flex-direction: column;
+  margin-top: 38px;
+  align-items: flex-start;
+}
+
+.sidebar__user-controller-button {
+  color: #000;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  padding: 0;
+  margin-bottom: 10px;
+  font-weight: 700;
+  line-height: 24px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.sidebar__user-controller-button:hover {
+  cursor: pointer;
+  opacity: 0.8;
 }

@@ -1,7 +1,16 @@
 import "../blocks/ItemModal.css";
 import closeButtonPath from "../images/closeButton.svg";
+import { useContext } from "react";
+import CurrentUserContext from "../contexts/CurrentUserContext";
 
 const ItemModal = ({ selectedCard, onClose, openConfirmationModal }) => {
+  const currentUser = useContext(CurrentUserContext);
+  const userInfo = currentUser ? currentUser : "";
+  const isOwn = selectedCard.owner === userInfo?.data._id;
+  const modalDeleteButtonClassName = `modal__button-delete ${
+    isOwn ? "modal__button-delete_visible" : "modal__button-delete_hidden"
+  }`;
+
   return (
     <div className="item__modal">
       <div className="item__modal-content">
@@ -17,7 +26,7 @@ const ItemModal = ({ selectedCard, onClose, openConfirmationModal }) => {
         <p className="item__modal-info">Weather: {selectedCard.weather}</p>
         <button
           type="text"
-          className="modal__button-delete"
+          className={modalDeleteButtonClassName}
           onClick={openConfirmationModal}
         >
           Delete item

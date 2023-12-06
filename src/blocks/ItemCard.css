@@ -21,10 +21,18 @@
   object-fit: cover;
 }
 
-.card__name {
-  text-align: center;
+.card__info {
   position: absolute;
   top: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
+}
+
+.card__name {
+  text-align: center;
   max-width: 90px;
   width: 100%;
   border-radius: 4px;
@@ -38,4 +46,29 @@
   font-weight: 700px;
   font-size: 16px;
   line-height: 1.2;
+}
+
+.card__like-button {
+  background: transparent url(../images/likeButtonOff.svg) center no-repeat;
+  background-size: cover;
+  width: 19px;
+  height: 16px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  border: none;
+  padding: 1px 9px;
+}
+
+.card_like-button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.card__like-button-active {
+  background-image: url(../images/likeButtonOn.svg);
+  border: none;
+}
+
+.card__like-button-hidden {
+  visibility: hidden;
 }

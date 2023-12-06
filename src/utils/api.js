@@ -1,4 +1,4 @@
-const baseUrl = "https://my-json-server.typicode.com/JBr4ndt/se_project_react";
+const baseUrl = "http://localhost:3001";
 
 const checkResponse = (res) => {
   if (res.ok) {
@@ -8,7 +8,7 @@ const checkResponse = (res) => {
 };
 
 const getItemList = () => {
-  return fetch(`${baseUrl}/items/`, {
+  return fetch(`${baseUrl}/items`, {
     headers: {
       "Content-Type": "application/json",
     },
@@ -16,10 +16,11 @@ const getItemList = () => {
 };
 
 const addItem = ({ name, weather, imageUrl }) => {
-  return fetch(`${baseUrl}/items/`, {
+  return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      authorization: `Bearer ${localStorage.getItem("jwt")}`,
     },
     body: JSON.stringify({
       name,
@@ -34,6 +35,27 @@ const removeItem = (id) => {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
+      authorization: `Bearer ${localStorage.getItem("jwt")}`,
+    },
+  }).then(checkResponse);
+};
+//pass owner as body
+const addCardLike = (id) => {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${localStorage.getItem("jwt")}`,
+    },
+  }).then(checkResponse);
+};
+//pass owner as body
+const removeCardLike = (id) => {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${localStorage.getItem("jwt")}`,
     },
   }).then(checkResponse);
 };
@@ -42,6 +64,8 @@ const api = {
   getItemList,
   addItem,
   removeItem,
+  addCardLike,
+  removeCardLike,
 };
 
 export default api;

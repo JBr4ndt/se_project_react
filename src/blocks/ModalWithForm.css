@@ -64,3 +64,19 @@
   cursor: pointer;
   opacity: 0.6;
 }
+
+.modal__button-shift {
+  color: rgba(0, 0, 0, 0.5);
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  border: none;
+  background-color: transparent;
+}
+
+.modal__button-shift:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}

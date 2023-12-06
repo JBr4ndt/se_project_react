@@ -18,6 +18,8 @@
 .header__nav {
   display: flex;
   gap: 20px;
+  min-height: 42px;
+  align-items: center;
 }
 
 .header__link {
@@ -35,4 +37,12 @@
 
 .header__button:hover {
   cursor: pointer;
+}
+
+.header__avatar {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(0, 0, 0, 0.5);
 }

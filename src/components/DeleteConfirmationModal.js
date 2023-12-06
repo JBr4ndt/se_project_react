@@ -7,8 +7,9 @@ const DeleteConfirmationModal = ({
   onCardDelete,
   isLoading,
 }) => {
+  console.log(selectedCard._id);
   const handleDeleteItem = () => {
-    onCardDelete(selectedCard.id);
+    onCardDelete(selectedCard._id);
   };
 
   return (

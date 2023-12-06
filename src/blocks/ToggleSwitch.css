@@ -33,28 +33,28 @@
 }
 
 .switch__slider-F {
-  top: 18px;
+  top: 3px;
   left: 4px;
   cursor: pointer;
 }
 
 .switch__slider-C {
-  top: 18px;
+  top: 3px;
   left: 32px;
   cursor: pointer;
 }
 
 .switch__temp-F {
   position: absolute;
-  top: 10px;
-  left: 14.5px;
+  top: -5px;
+  left: 14px;
   color: rgba(0, 0, 0, 0.5);
   cursor: pointer;
 }
 
 .switch__temp-C {
   position: absolute;
-  top: 10px;
+  top: -5px;
   left: 41px;
   color: rgba(0, 0, 0, 0.5);
   cursor: pointer;
