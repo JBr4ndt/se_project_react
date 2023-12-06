@@ -6,4 +6,18 @@ The idea of the application is pretty simple - we make a call to an API, which t
 
 ## Links
 
-- [Figma Design](https://www.figma.com/file/DTojSwldenF9UPKQZd6RRb/Sprint-10%3A-WTWR)
+- [Figma Design](https://www.figma.com/file/bfVOvqlLmoKZ5lpro8WWBe/Sprint-14_-WTWR?type=design&node-id=1-598&mode=design&t=s8CjAbShogCE6gLs-0)
+- [Back-end Repo] (https://github.com/JBr4ndt/se_project_express)
+
+## Project Features
+
+- BEM method
+- flexbox
+- grid
+- hover state
+
+- JavaScript/react
+
+- Data fetch from API
+- Screen transition using Router
+- Monitoring states using hooks
