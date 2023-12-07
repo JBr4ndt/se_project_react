@@ -60,12 +60,11 @@ const removeCardLike = (id) => {
   }).then(checkResponse);
 };
 
-const api = {
+export {
   getItemList,
   addItem,
   removeItem,
   addCardLike,
   removeCardLike,
+  checkResponse,
 };
-
-export default api;

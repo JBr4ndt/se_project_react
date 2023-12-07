@@ -9,7 +9,13 @@ import DeleteConfirmationModal from "./DeleteConfirmationModal";
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
 import CurrentUserContext from "../contexts/CurrentUserContext";
 import { getForecastWeather, parseWeatherData } from "../utils/weatherApi";
-import api from "../utils/api";
+import {
+  getItemList,
+  addItem,
+  removeItem,
+  addCardLike,
+  removeCardLike,
+} from "../utils/api";
 import { useEffect, useState } from "react";
 import {
   Switch,
@@ -68,10 +74,8 @@ function App() {
   const handleSubmit = (request) => {
     setIsLoading(true);
     request()
-      .then(() => {
-        handleCloseModal();
-      })
-      .catch((err) => console.log(err))
+      .then(handleCloseModal)
+      .catch(console.error)
       .finally(() => setIsLoading(false));
   };
 
@@ -104,12 +108,7 @@ function App() {
 
   const handleProfileChanges = ({ name, avatar }) => {
     const editProfileRequest = () => {
-      return auth.editProfile({ name, avatar }).then((res) => {
-        console.log(res);
-        const user = { name: res.name, avatar: res.avatar };
-        console.log(user);
-        setCurrentUser(user);
-      });
+      return auth.editProfile({ name, avatar }).then(setCurrentUser);
     };
     handleSubmit(editProfileRequest);
   };
@@ -123,7 +122,7 @@ function App() {
 
   const handleAddItemSubmit = (item) => {
     const addItemRequest = () => {
-      return api.addItem(item).then((newItem) => {
+      return addItem(item).then((newItem) => {
         setClothingItems([newItem, ...clothingItems]);
       });
     };
@@ -132,7 +131,7 @@ function App() {
 
   const handleCardDelete = (selectedCard) => {
     const cardDeleteRequest = () => {
-      return api.removeItem(selectedCard._id).then(() => {
+      return removeItem(selectedCard._id).then(() => {
         const filteredCards = clothingItems.filter((item) => {
           return item._id !== selectedCard._id;
         });
@@ -146,16 +145,14 @@ function App() {
     console.log(id, isLiked);
     const token = localStorage.getItem("jwt");
     !isLiked
-      ? api
-          .addCardLike(id, token)
+      ? addCardLike(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
               cards.map((c) => (c._id === id ? updatedCard : c))
             );
           })
           .catch(console.error)
-      : api
-          .removeCardLike(id, token)
+      : removeCardLike(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
               cards.map((c) => (c._id === id ? updatedCard : c))
@@ -165,17 +162,17 @@ function App() {
   };
 
   useEffect(() => {
-    const closeByEscape = (e) => {
-      if (e.key === "Escape") {
+    if (!activeModal) return;
+    const handleEscClose = (evt) => {
+      if (evt.key === "Escape") {
         handleCloseModal();
       }
     };
-    document.addEventListener("keydown", closeByEscape);
-
+    document.addEventListener("keydown", handleEscClose);
     return () => {
-      document.removeEventListener("keydown", closeByEscape);
+      document.removeEventListener("keydown", handleEscClose);
     };
-  }, []);
+  }, [activeModal]);
 
   useEffect(() => {
     getForecastWeather()
@@ -191,8 +188,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    api
-      .getItemList()
+    getItemList()
       .then((items) => {
         setClothingItems(items);
       })

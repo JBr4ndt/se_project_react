@@ -19,19 +19,9 @@ const EditProfileModal = ({ onClose, isLoading, onChangeProfile }) => {
     setAvatar(e.target.value);
   };
 
-  /*const handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     onChangeProfile({ name, avatar });
-  };*/
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await onChangeProfile({ name, avatar });
-      window.location.reload();
-    } catch (err) {
-      console.error("Error updating profile: ", err);
-    }
   };
 
   return (
