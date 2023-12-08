@@ -13,26 +13,28 @@ const DeleteConfirmationModal = ({
   };
 
   return (
-    <div className="confirmation__modal">
-      <div className="confirmation__modal-content">
+    <div className="modal modal_type_confirmation">
+      <div className="modal__content">
         <button type="button" onClick={onClose} className="modal__button-close">
           <img src={closeButtonPath} alt="Close button" />
         </button>
-        <div className="confirmation__texts">
-          <p className="confirmation__text">
+        <div className="modal__confirmation-texts">
+          <p className="modal__confirmation-text">
             Are you sure you want to delete this item?
           </p>
-          <p className="confirmation__text">This action is irreversible.</p>
+          <p className="modal__confirmation-text">
+            This action is irreversible.
+          </p>
         </div>
         <button
-          className="confirmation__button-delete"
+          className="modal__confirmation-button-delete"
           type="text"
           onClick={handleDeleteItem}
         >
           {isLoading ? "Saving..." : "Yes, delete item"}
         </button>
         <button
-          className="confirmation__button-cancel"
+          className="modal__confirmation-button-cancel"
           type="text"
           onClick={onClose}
         >

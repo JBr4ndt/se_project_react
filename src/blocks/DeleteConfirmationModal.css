@@ -1,4 +1,4 @@
-.confirmation__modal {
+.modal_type_confirmation {
   position: fixed;
   top: 0;
   right: 0;
@@ -11,7 +11,7 @@
   flex-direction: column;
 }
 
-.confirmation__modal-content {
+.modal__content {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -50,18 +50,18 @@
   opacity: 0.6;
 }
 
-.confirmation__texts {
+.modal__confirmation-texts {
   text-align: center;
   margin-top: 60px;
   margin-bottom: 26px;
 }
 
-.confirmation__text {
+.modal__confirmation-text {
   padding: 0;
   margin: 0;
 }
 
-.confirmation__button-delete {
+.modal__confirmation-button-delete {
   color: #ff4d00;
   background-color: transparent;
   cursor: pointer;
@@ -74,7 +74,7 @@
   line-height: 1.2;
 }
 
-.confirmation__button-cancel {
+.modal__confirmation-button-cancel {
   background-color: transparent;
   cursor: pointer;
   max-width: 80px;

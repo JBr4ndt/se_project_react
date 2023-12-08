@@ -1,4 +1,4 @@
-.item__modal {
+.modal_type_item {
   position: fixed;
   top: 0;
   right: 0;
@@ -11,7 +11,7 @@
   flex-direction: column;
 }
 
-.item__modal-content {
+.modal__item-content {
   position: relative;
   max-height: 610px;
   max-width: 496px;
@@ -28,17 +28,17 @@
   line-height: 1.2;
 }
 
-.item__modal-image {
+.modal__item-image {
   max-height: 496px;
   width: 100%;
   object-fit: cover;
 }
 
-.item__modal-name {
+.modal__item-name {
   margin: 12px 0 0 32px;
 }
 
-.item__modal-info {
+.modal__item-info {
   margin: 12px 0 32px 32px;
 }
 
