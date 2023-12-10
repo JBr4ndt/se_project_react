@@ -11,7 +11,7 @@
   flex-direction: column;
 }
 
-.modal__content {
+.modal__confirmation-content {
   display: flex;
   flex-direction: column;
   gap: 20px;

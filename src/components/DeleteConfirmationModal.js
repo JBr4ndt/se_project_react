@@ -14,7 +14,7 @@ const DeleteConfirmationModal = ({
 
   return (
     <div className="modal modal_type_confirmation">
-      <div className="modal__content">
+      <div className="modal__confirmation-content">
         <button type="button" onClick={onClose} className="modal__button-close">
           <img src={closeButtonPath} alt="Close button" />
         </button>
