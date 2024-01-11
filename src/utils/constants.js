@@ -12,6 +12,11 @@ import nightStormPath from "../images/night/storm.svg";
 import nightSnowPath from "../images/night/snow.svg";
 import nightFogPath from "../images/night/fog.svg";
 
+export const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://api.wtwr.claybert.com"
+    : "http://localhost:3001";
+
 export const latitude = 45.51;
 export const longitude = -122.67;
 export const APIkey = "28c51f31629d1d843df9c1b0423a08cb";
